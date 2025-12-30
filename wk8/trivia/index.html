@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function(){
+                let text1 = document.querySelector('#feedback1');
+                let text2 = document.querySelector('#feedback2');
+                document.querySelector(".correct").addEventListener('click', function(event) {
+                    event.target.style.backgroundColor = "green";
+                    text1.textContent = "Correct";
+                    event.preventDefault();
+                });
+                document.querySelectorAll(".incorrect").forEach(button => {
+                    button.addEventListener('click', function(event) {
+                    event.target.style.backgroundColor = "red";
+                    text1.textContent = "Incorrect";
+                    event.preventDefault();
+                })
+                });
+                document.querySelector("#check").addEventListener('click', function(event){
+                    let input = document.querySelector('input');
+                    if(input.value === "SGA"){
+                        text2.textContent = "Correct";
+                        input.style.backgroundColor = "green";
+                    }else{
+                        text2.textContent = "nah";
+                        input.style.backgroundColor = "red";
+                    }
+                    event.preventDefault();
+                });
+            })
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Who is the GOAT?</h3>
+                <p id="feedback1"></p>
+                <form>
+                    <button class="correct">Curry</button>
+                    <button class="incorrect">Lebron</button>
+                    <button class="incorrect">MJ</button>
+                    <button class="incorrect">Kobe</button>
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Who foul baits the most?</h3>
+                <p id="feedback2"></p>
+                <form>
+                    <input placeholder="Answer" type="text">
+                    <button id="check">Check</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
