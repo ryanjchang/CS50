@@ -1,0 +1,31 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <h1>Your stocks</h1>
+    <h3>Current Cash: {{cash}}</h3>
+    <!-- table with stocks owned: company name, symbol, price, shares owned, value -->
+    <table class="width:100%">
+        <thead>
+            <tr>
+                <th>Name(Symbol) </th>
+                <th>Price </th>
+                <th>Owned </th>
+                <th>Value </th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for share in shares %}
+                    <tr>
+                        <td>{{ share.name }}({{ share.symbol }})</td>
+                        <td>{{share.price}}</td>
+                        <td>{{share.owned}}</td>
+                        <td>{{share.value}}</td>
+                    </tr>
+                 {% endfor %}
+            </tbody>
+    </table>
+{% endblock %}
